@@ -22,8 +22,9 @@ public class RollDice : MonoBehaviour
             // Get Random Dice Value
             var diceID = diceBlueprint.ID; // Get Which Dice to Roll
             var randomDiceValue = diceBlueprint.diceValues[_DiceValue];
-            var randomDiceType = diceBlueprint.diceTypes[_DiceValue];
-            Debug.Log(diceID + " " + randomDiceType + " " + randomDiceValue);
+            var randomDiceType = diceBlueprint.diceAbilities[_DiceValue];
+            var randomDiceTarget = diceBlueprint.diceTargets[_DiceValue];
+            Debug.Log(diceID + " " + randomDiceType + " " + randomDiceValue + " " + randomDiceTarget);
         }
     }
     
