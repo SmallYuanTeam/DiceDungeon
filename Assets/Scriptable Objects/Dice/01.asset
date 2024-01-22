@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e4238c8f7a43247a24df2177533152, type: 3}
   m_Name: 01
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  diceType: 0
   diceRarity: 0
-  diceTopValue: 0
-  diceBottomValue: 0
+  ID: 0
+  sprite: {fileID: 0}
+  diceValues: 040000000400000004000000030000000700000005000000
+  diceTypes: 000000000000000002000000030000000000000004000000
