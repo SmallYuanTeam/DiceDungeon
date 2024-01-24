@@ -60,6 +60,7 @@ namespace Dice
         public DiceRarity diceRarity;
         public DiceType diceType;
         public string diceID;
+        public string diceName;
         public Sprite sprite;
         public List<int> diceValues;
         public List<DiceAbility> diceAbilities;
