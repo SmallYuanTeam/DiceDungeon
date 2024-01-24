@@ -58,7 +58,8 @@ namespace Dice
     public class DiceBlueprints : ScriptableObject
     {
         public DiceRarity diceRarity;
-        public int ID;
+        public DiceType diceType;
+        public string diceID;
         public Sprite sprite;
         public List<int> diceValues;
         public List<DiceAbility> diceAbilities;

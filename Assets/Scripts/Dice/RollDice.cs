@@ -20,7 +20,7 @@ public class RollDice : MonoBehaviour
             // Get Random Dice Value
             int _DiceValue = Random.Range(0, _DiceListCount);
             // Get Random Dice Value
-            var diceID = diceBlueprint.ID; // Get Which Dice to Roll
+            var diceID = diceBlueprint.diceID; // Get Which Dice to Roll
             var randomDiceValue = diceBlueprint.diceValues[_DiceValue];
             var randomDiceType = diceBlueprint.diceAbilities[_DiceValue];
             var randomDiceTarget = diceBlueprint.diceTargets[_DiceValue];

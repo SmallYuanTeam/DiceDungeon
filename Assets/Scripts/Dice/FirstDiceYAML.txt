@@ -1,0 +1,24 @@
+DiceRarity: Basic
+ID: !!int 01
+Sprite: None
+DiceValue:
+    00: 2
+    01: 3
+    02: 4
+    03: 1
+    04: 2
+    05: 3
+DiceAbilities:
+    00: Attack
+    01: Attack
+    02: Attack
+    03: Increace
+    04: Increace
+    05: Increace
+DiceTargets:
+    00: Enemy
+    01: Enemy
+    02: Enemy
+    03: Self
+    04: Self
+    05: Self 
