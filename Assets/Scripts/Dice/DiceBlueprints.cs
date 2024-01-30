@@ -61,6 +61,10 @@ namespace Dice
         public DiceType diceType;
         public string diceID;
         public string diceName;
+        public string diceCNName;
+        public string diceDescription;
+        public string diceCNDescription;
+        public int weight;
         public Sprite sprite;
         public List<int> diceValues;
         public List<DiceAbility> diceAbilities;

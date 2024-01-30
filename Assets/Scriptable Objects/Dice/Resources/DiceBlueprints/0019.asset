@@ -10,10 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9e4238c8f7a43247a24df2177533152, type: 3}
-  m_Name: 04
+  m_Name: 0019
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  diceRarity: 3
   diceType: 0
-  diceRarity: 0
-  diceTopValue: 0
-  diceBottomValue: 0
+  diceID: 0019
+  diceName: Kesagiri
+  diceCNName: 
+  diceDescription: 
+  diceCNDescription: 
+  weight: 0
+  sprite: {fileID: 0}
+  diceValues: 050000000600000007000000080000000600000007000000
+  diceAbilities: 000000000000000000000000000000000d0000000d000000
+  diceTargets: 010000000100000001000000010000000100000001000000

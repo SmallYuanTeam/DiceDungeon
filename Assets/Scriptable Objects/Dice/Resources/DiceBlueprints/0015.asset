@@ -10,10 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9e4238c8f7a43247a24df2177533152, type: 3}
-  m_Name: 05
+  m_Name: 0015
   m_EditorClassIdentifier: 
-  diceRarity: 0
-  ID: 0
+  diceRarity: 2
+  diceType: 0
+  diceID: 0015
+  diceName: Goblin Soul
+  diceCNName: 
+  diceDescription: 
+  diceCNDescription: 
+  weight: 10
   sprite: {fileID: 0}
-  diceValues: 050000000500000005000000050000000500000005000000
-  diceTypes: 000000000000000000000000000000000000000000000000
+  diceValues: 060000000700000008000000020000000300000002000000
+  diceAbilities: 00000000000000000000000006000000060000000d000000
+  diceTargets: 010000000100000001000000010000000100000001000000
