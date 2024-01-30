@@ -19,7 +19,7 @@ MonoBehaviour:
   diceCNName: 
   diceDescription: 
   diceCNDescription: 
-  weight: 10
+  weight: 0
   sprite: {fileID: 0}
   diceValues: 060000000700000008000000020000000300000002000000
   diceAbilities: 00000000000000000000000006000000060000000d000000
