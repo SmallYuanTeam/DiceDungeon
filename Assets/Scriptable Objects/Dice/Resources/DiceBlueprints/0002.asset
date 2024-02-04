@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 0
   diceID: 0002
   diceName: Attack
+  diceCNName: 
+  diceDescription: 
+  diceCNDescription: 
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 010000000200000003000000030000000200000003000000
   diceAbilities: 000000000000000000000000000000000d0000000d000000

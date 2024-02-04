@@ -10,42 +10,6 @@ public class GetDice : MonoBehaviour
     public TextMeshProUGUI DiceInfoTextB;
     public TextMeshProUGUI DiceInfoTextC;
 
-    // public void GetDice3()
-    // {
-    //     DiceBlueprints[] allDiceBlueprints = Resources.LoadAll<DiceBlueprints>("DiceBlueprints");
-    //     List<DiceBlueprints> selectedDiceBlueprints = SelectRandomDiceBlueprints(allDiceBlueprints, 3);
-        
-    //     if (selectedDiceBlueprints.Count >= 3)
-    //     {
-    //         DiceInfoTextA.text = selectedDiceBlueprints[0].diceName;
-    //         DiceInfoTextB.text = selectedDiceBlueprints[1].diceName;
-    //         DiceInfoTextC.text = selectedDiceBlueprints[2].diceName;
-    //     }
-    // }
-
-    // List<DiceBlueprints> SelectRandomDiceBlueprints(DiceBlueprints[] Blueprints, int numberOfDice)
-    // {
-    //     List<DiceBlueprints> selected = new List<DiceBlueprints>();
-    //     List<int> alreadySelected = new List<int>();
-
-    //     for (int i = 0; i < numberOfDice; i++)
-    //     {
-    //         int index;
-    //         do
-    //         {
-    //             index = Random.Range(0, Blueprints.Length);
-    //         } while (alreadySelected.Contains(index));
-    //         {
-    //             alreadySelected.Add(index);
-    //             selected.Add(Blueprints[index]);                
-    //         }
-    //     }
-    //     return selected;
-    // }
-
-// weighted dice
-
-
     public void GetDice3Weighted()
     {
         DiceBlueprints[] allDiceBlueprints = Resources.LoadAll<DiceBlueprints>("DiceBlueprints");
@@ -94,8 +58,9 @@ public class GetDice : MonoBehaviour
     {
         if (tmpText != null && blueprint != null)
         {
-            // 假设 DiceBlueprint 有一个名为 'name' 的属性
-            tmpText.text = blueprint.diceName;
+            string info = $"名稱：{blueprint.diceName}\n" +
+                          $"描述：{blueprint.diceDescription}";
+            tmpText.text = info;
         }
     }
 }
