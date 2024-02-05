@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 0
   diceID: 0008
   diceName: Smash Attack
+  diceCNName: "\u885D\u64CA\u653B\u52E2"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 030000000400000005000000060000000200000002000000
   diceAbilities: 000000000000000000000000000000000600000010000000

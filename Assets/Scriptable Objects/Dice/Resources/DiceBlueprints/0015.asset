@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 0
   diceID: 0015
   diceName: Goblin Soul
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u54E5\u5E03\u6797\u4E4B\u9B42"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 060000000700000008000000020000000300000002000000
   diceAbilities: 00000000000000000000000006000000060000000d000000

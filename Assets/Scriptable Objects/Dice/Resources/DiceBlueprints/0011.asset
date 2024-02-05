@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 0
   diceID: 0011
   diceName: Serrated Sword
+  diceCNName: "\u92F8\u9F52\u528D"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 030000000400000001000000010000000200000002000000
   diceAbilities: 0000000000000000080000000f0000000f0000000d000000

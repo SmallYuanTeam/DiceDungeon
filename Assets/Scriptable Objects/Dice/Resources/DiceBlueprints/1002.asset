@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1002
   diceName: Blocked
+  diceCNName: "\u683C\u64CB"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 13
   sprite: {fileID: 0}
   diceValues: 020000000200000003000000040000000300000004000000
   diceAbilities: 010000000100000001000000010000000200000002000000

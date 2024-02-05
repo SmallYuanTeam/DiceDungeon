@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 0
   diceID: 0021
   diceName: Strike
+  diceCNName: "\u5F37\u8972"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 9
   sprite: {fileID: 0}
   diceValues: 080000000800000009000000090000000a0000000a000000
   diceAbilities: 000000000000000000000000000000000000000009000000

@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 0
   diceID: 0022
   diceName: Break Strike
+  diceCNName: "\u7834\u58DE\u5F37\u8972"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 9
   sprite: {fileID: 0}
   diceValues: 07000000080000000700000008000000090000000a000000
   diceAbilities: 000000000000000008000000080000000800000008000000
