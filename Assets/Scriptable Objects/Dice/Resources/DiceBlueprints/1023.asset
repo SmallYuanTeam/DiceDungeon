@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1023
   diceName: Indomitable Soul
+  diceCNName: "\u4E0D\u5C48\u9748\u9B42"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 9
   sprite: {fileID: 0}
   diceValues: 08000000090000000a000000080000000900000004000000
   diceAbilities: 040000000400000004000000010000000100000002000000

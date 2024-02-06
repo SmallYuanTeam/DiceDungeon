@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3030
   diceName: Bloodthirsty Soul
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u55DC\u8840\u4E4B\u9B42"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 3
   sprite: {fileID: 0}
   diceValues: 090000000a0000000b0000000b0000000c0000000d000000
   diceAbilities: 0900000009000000090000000d0000000d0000000d000000

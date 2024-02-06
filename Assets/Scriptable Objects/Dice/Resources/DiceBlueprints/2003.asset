@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 2
   diceID: 2003
   diceName: Take Break
+  diceCNName: "\u5598\u606F"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 13
   sprite: {fileID: 0}
   diceValues: 020000000300000004000000010000000200000002000000
   diceAbilities: 020000000200000002000000040000000400000008000000

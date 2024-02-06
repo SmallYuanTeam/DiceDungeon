@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3014
   diceName: Igniter
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u9EDE\u706B\u5668"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 030000000500000006000000070000000100000002000000
   diceAbilities: 070000000700000007000000070000000000000000000000

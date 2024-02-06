@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3026
   diceName: Flame Frost
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u51CD\u7D50\u4E4B\u706B"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 9
   sprite: {fileID: 0}
   diceValues: 070000000800000009000000070000000800000009000000
   diceAbilities: 0700000007000000070000000c0000000c0000000c000000

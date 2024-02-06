@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3007
   diceName: Black Rune
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u9ED1\u8272\u7B26\u6587"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 010000000200000002000000030000000200000003000000
   diceAbilities: 050000000500000007000000070000000d0000000d000000

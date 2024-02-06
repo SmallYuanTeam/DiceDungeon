@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1008
   diceName: Resistance
+  diceCNName: "\u834A\u68D8\u93A7\u7532"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 020000000300000004000000050000000300000004000000
   diceAbilities: 01000000010000000e0000000e0000000f0000000f000000

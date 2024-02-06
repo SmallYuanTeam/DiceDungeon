@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1010
   diceName: Giant Blood
+  diceCNName: "\u5DE8\u4EBA\u8840\u8108"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 030000000400000001000000020000000200000003000000
   diceAbilities: 040000000400000001000000010000000300000003000000

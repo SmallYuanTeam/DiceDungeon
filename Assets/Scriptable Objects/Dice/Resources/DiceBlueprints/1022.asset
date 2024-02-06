@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1022
   diceName: Dragon Skin
+  diceCNName: "\u5DE8\u9F8D\u9C57\u7247"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 070000000800000009000000030000000400000004000000
   diceAbilities: 04000000040000000400000007000000070000000e000000

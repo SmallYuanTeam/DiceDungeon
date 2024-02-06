@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3009
   diceName: Freez
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u51CD\u7D50\u8853"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 010000000200000003000000020000000300000003000000
   diceAbilities: 0c0000000c0000000c00000005000000050000000b000000

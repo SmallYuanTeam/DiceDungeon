@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3005
   diceName: Mist Potion
+  diceCNName: "\u8FF7\u9727\u85E5\u6C34"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 13
   sprite: {fileID: 0}
   diceValues: 010000000200000003000000010000000200000003000000
   diceAbilities: 0b0000000b0000000b000000100000001000000010000000

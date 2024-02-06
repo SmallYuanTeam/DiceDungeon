@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1017
   diceName: Hedgehog Soul
+  diceCNName: "\u523A\u875F\u9748\u9B42"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 030000000400000005000000050000000600000006000000
   diceAbilities: 0100000001000000010000000f0000000f0000000f000000

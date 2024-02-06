@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3018
   diceName: Blizzard
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u66B4\u98A8\u96EA"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 030000000400000005000000060000000500000005000000
   diceAbilities: 0c0000000c0000000c0000000c0000000b00000008000000

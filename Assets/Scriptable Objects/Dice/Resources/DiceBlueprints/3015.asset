@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3015
   diceName: Volt
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u4F0F\u7279\u96FB\u64CA"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 010000000400000005000000060000000200000003000000
   diceAbilities: 0b0000000b0000000b0000000b0000000700000007000000

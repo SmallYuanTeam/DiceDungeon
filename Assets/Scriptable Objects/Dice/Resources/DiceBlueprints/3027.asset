@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3027
   diceName: Lunatic Soul
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u7672\u72C2\u9748\u9B42"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 9
   sprite: {fileID: 0}
   diceValues: 070000000800000007000000080000000900000009000000
   diceAbilities: 030000000300000009000000090000000900000011000000

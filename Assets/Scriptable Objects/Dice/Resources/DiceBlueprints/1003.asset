@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1003
   diceName: Shield Blocked
+  diceCNName: "\u9632\u79A6\u59FF\u614B"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 13
   sprite: {fileID: 0}
   diceValues: 010000000200000002000000030000000400000002000000
   diceAbilities: 010000000100000001000000010000000400000004000000

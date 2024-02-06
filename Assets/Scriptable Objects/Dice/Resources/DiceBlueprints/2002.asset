@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 2
   diceID: 2002
   diceName: Breath
+  diceCNName: "\u6DF1\u547C\u5438"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 13
   sprite: {fileID: 0}
   diceValues: 030000000400000005000000020000000300000002000000
   diceAbilities: 020000000200000002000000010000000100000004000000

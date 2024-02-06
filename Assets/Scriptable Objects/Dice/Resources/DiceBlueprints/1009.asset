@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1009
   diceName: Poison Body
+  diceCNName: "\u5287\u6BD2\u8EC0\u9AD4"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 020000000300000001000000020000000300000004000000
   diceAbilities: 040000000400000005000000050000000500000005000000

@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1015
   diceName: Crystallized Vine
+  diceCNName: "\u7D50\u6676\u85E4\u8513"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 050000000600000005000000060000000300000004000000
   diceAbilities: 01000000010000000f0000000f0000000c0000000c000000

@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1005
   diceName: Purify Soul
+  diceCNName: "\u6F54\u6DE8\u9748\u9B42"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 13
   sprite: {fileID: 0}
   diceValues: 010000000200000002000000030000000300000001000000
   diceAbilities: 010000000100000004000000130000001300000012000000

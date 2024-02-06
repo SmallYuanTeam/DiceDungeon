@@ -16,6 +16,10 @@ MonoBehaviour:
   diceType: 1
   diceID: 1013
   diceName: Reflect Rune
+  diceCNName: "\u6620\u5C04\u7B26\u6587"
+  diceDescription: null
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 020000000300000004000000050000000600000007000000
   diceAbilities: 01000000010000000e0000000e0000001000000010000000

@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3029
   diceName: Insanity Potion
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u8831\u6BD2\u85E5\u6C34"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 3
   sprite: {fileID: 0}
   diceValues: 0a0000000b0000000c0000000a0000000b0000000b000000
   diceAbilities: 060000000600000006000000140000001400000010000000

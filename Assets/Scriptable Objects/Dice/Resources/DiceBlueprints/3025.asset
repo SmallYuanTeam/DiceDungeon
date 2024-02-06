@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3025
   diceName: Mega Volt
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u8D85\u4F0F\u7279\u96FB\u64CA"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 060000000600000007000000080000000700000008000000
   diceAbilities: 0b0000000b0000000b0000000b0000000700000008000000

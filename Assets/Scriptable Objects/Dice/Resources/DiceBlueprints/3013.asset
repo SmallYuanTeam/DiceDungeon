@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3013
   diceName: Hot Sauce
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u7099\u71B1\u8FA3\u91AC"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 10
   sprite: {fileID: 0}
   diceValues: 030000000400000003000000040000000500000001000000
   diceAbilities: 06000000060000000700000007000000070000000d000000

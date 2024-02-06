@@ -16,10 +16,10 @@ MonoBehaviour:
   diceType: 3
   diceID: 3031
   diceName: Dragon Blood
-  diceCNName: 
-  diceDescription: 
-  diceCNDescription: 
-  weight: 0
+  diceCNName: "\u5DE8\u9F8D\u8840\u8108"
+  diceDescription: nul
+  diceCNDescription: null
+  weight: 3
   sprite: {fileID: 0}
   diceValues: 0b0000000c0000000d0000000b0000000c00000009000000
   diceAbilities: 070000000700000007000000090000000900000011000000
