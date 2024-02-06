@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Dice;
 using TMPro;
 using UnityEngine;
@@ -6,10 +7,8 @@ using UnityEngine.UI;
 
 public class GetDice : MonoBehaviour
 {
-    //get LangController component on self
-    public LangController langController;
     //get three Button component
-    public Button GetDiceButton;
+    public Button GetDiceButton1;
     public Button GetDiceButton2;
     public Button GetDiceButton3;
 
@@ -17,23 +16,20 @@ public class GetDice : MonoBehaviour
     {
         DiceBlueprints[] allDiceBlueprints = Resources.LoadAll<DiceBlueprints>("DiceBlueprints");
         List<DiceBlueprints> selectedDices = SelectRandomWeightedDice(allDiceBlueprints, 3);
-        //get Button TextMeshPro component with "Name" tag
-        TextMeshProUGUI DiceNameTextA = GetDiceButton.transform.Find("Name").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI DiceNameTextB = GetDiceButton2.transform.Find("Name").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI DiceNameTextC = GetDiceButton3.transform.Find("Name").GetComponent<TextMeshProUGUI>();
-        //get Button TextMeshPro component with "Description" tag
-        TextMeshProUGUI DiceDescriptionTextA = GetDiceButton.transform.Find("Description").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI DiceDescriptionTextB = GetDiceButton2.transform.Find("Description").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI DiceDescriptionTextC = GetDiceButton3.transform.Find("Description").GetComponent<TextMeshProUGUI>();
-        // 更新 TextMeshPro 文本
-        UpdateNameTMP(DiceNameTextA, selectedDices.Count > 0 ? selectedDices[0] : null);
-        UpdateNameTMP(DiceNameTextB, selectedDices.Count > 1 ? selectedDices[1] : null);
-        UpdateNameTMP(DiceNameTextC, selectedDices.Count > 2 ? selectedDices[2] : null);
 
-        UpdateDescriptionTMP(DiceDescriptionTextA, selectedDices.Count > 0 ? selectedDices[0] : null);
-        UpdateDescriptionTMP(DiceDescriptionTextB, selectedDices.Count > 1 ? selectedDices[1] : null);
-        UpdateDescriptionTMP(DiceDescriptionTextC, selectedDices.Count > 2 ? selectedDices[2] : null);
-        // 使用 selectedDices 做些什么
+        // 更新 TextMeshPro 文本
+        UpdateTextMeshPro(GetDiceButton1.transform.Find("Name").GetComponent<TextMeshProUGUI>(), selectedDices.Count > 0 ? selectedDices[0] : null, "Name");
+        UpdateTextMeshPro(GetDiceButton2.transform.Find("Name").GetComponent<TextMeshProUGUI>(), selectedDices.Count > 1 ? selectedDices[1] : null, "Name");
+        UpdateTextMeshPro(GetDiceButton3.transform.Find("Name").GetComponent<TextMeshProUGUI>(), selectedDices.Count > 2 ? selectedDices[2] : null, "Name");
+
+        UpdateTextMeshPro(GetDiceButton1.transform.Find("Description").GetComponent<TextMeshProUGUI>(), selectedDices.Count > 0 ? selectedDices[0] : null, "Description");
+        UpdateTextMeshPro(GetDiceButton2.transform.Find("Description").GetComponent<TextMeshProUGUI>(), selectedDices.Count > 1 ? selectedDices[1] : null, "Description");
+        UpdateTextMeshPro(GetDiceButton3.transform.Find("Description").GetComponent<TextMeshProUGUI>(), selectedDices.Count > 2 ? selectedDices[2] : null, "Description");
+        
+        //transfer DiceBlueprints to GetDiceButton
+        GetDiceButton1.GetComponent<GetDiceButton>().diceBlueprints = selectedDices.Count > 0 ? selectedDices[0] : null;
+        GetDiceButton2.GetComponent<GetDiceButton>().diceBlueprints = selectedDices.Count > 1 ? selectedDices[1] : null;
+        GetDiceButton3.GetComponent<GetDiceButton>().diceBlueprints = selectedDices.Count > 2 ? selectedDices[2] : null;
     }
 
     List<DiceBlueprints> SelectRandomWeightedDice(DiceBlueprints[] blueprints, int count)
@@ -66,37 +62,37 @@ public class GetDice : MonoBehaviour
 
         return selected;
     }
-// UpdateTextMeshPro 函数
-    void UpdateNameTMP(TextMeshProUGUI tmpText, DiceBlueprints blueprint)
+    void Start()
+    {
+        GetDice3Weighted();
+    }
+
+    void UpdateTextMeshPro(TextMeshProUGUI tmpText, DiceBlueprints blueprint, string type)
     {
         if (tmpText != null && blueprint != null)
         {
-            if (langController.lang == "zh_TW")
-            {
-                string info = $"{blueprint.diceCNName}\n";
-                tmpText.text = info;
-            }
-            else if (langController.lang == "en_US")
-            {
-                string info = $"{blueprint.diceName}\n";
-                tmpText.text = info;
-            }
+            string fieldName = GetFieldName(type);
+            string fieldValue = GetFieldValue(blueprint, fieldName);
+            string info = $"{fieldValue}\n";
+            tmpText.text = info;
         }
     }
-    void UpdateDescriptionTMP(TextMeshProUGUI tmpText, DiceBlueprints blueprint)
+    string GetFieldName(string type)
     {
-        if (tmpText != null && blueprint != null)
+        switch (type)
         {
-            if (langController.lang == "zh_TW")
-            {
-                string info = $"{blueprint.diceCNDescription}";
-                tmpText.text = info;
-            }
-            else if (langController.lang == "en_US")
-            {
-                string info = $"{blueprint.diceDescription}";
-                tmpText.text = info;
-            }
+            case "Name":
+                return FindObjectOfType<DiceBackpack>().lang == "zh_TW" ? "diceCNName" : "diceName";
+            case "Description":
+                return FindObjectOfType<DiceBackpack>().lang == "zh_TW" ? "diceCNDescription" : "diceDescription";
+            default:
+                return "";
         }
+    }
+    
+    string GetFieldValue(DiceBlueprints blueprint, string fieldName)
+    {
+        // 使用反射來獲取字段值
+        return (string)typeof(DiceBlueprints).GetField(fieldName).GetValue(blueprint);
     }
 }
