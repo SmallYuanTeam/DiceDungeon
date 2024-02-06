@@ -6,20 +6,33 @@ using UnityEngine.UI;
 
 public class GetDice : MonoBehaviour
 {
-    public TextMeshProUGUI DiceInfoTextA;
-    public TextMeshProUGUI DiceInfoTextB;
-    public TextMeshProUGUI DiceInfoTextC;
+    //get LangController component on self
+    public LangController langController;
+    //get three Button component
+    public Button GetDiceButton;
+    public Button GetDiceButton2;
+    public Button GetDiceButton3;
 
     public void GetDice3Weighted()
     {
         DiceBlueprints[] allDiceBlueprints = Resources.LoadAll<DiceBlueprints>("DiceBlueprints");
         List<DiceBlueprints> selectedDices = SelectRandomWeightedDice(allDiceBlueprints, 3);
-
+        //get Button TextMeshPro component with "Name" tag
+        TextMeshProUGUI DiceNameTextA = GetDiceButton.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI DiceNameTextB = GetDiceButton2.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI DiceNameTextC = GetDiceButton3.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+        //get Button TextMeshPro component with "Description" tag
+        TextMeshProUGUI DiceDescriptionTextA = GetDiceButton.transform.Find("Description").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI DiceDescriptionTextB = GetDiceButton2.transform.Find("Description").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI DiceDescriptionTextC = GetDiceButton3.transform.Find("Description").GetComponent<TextMeshProUGUI>();
         // 更新 TextMeshPro 文本
-        UpdateTextMeshPro(DiceInfoTextA, selectedDices.Count > 0 ? selectedDices[0] : null);
-        UpdateTextMeshPro(DiceInfoTextB, selectedDices.Count > 1 ? selectedDices[1] : null);
-        UpdateTextMeshPro(DiceInfoTextC, selectedDices.Count > 2 ? selectedDices[2] : null);
+        UpdateNameTMP(DiceNameTextA, selectedDices.Count > 0 ? selectedDices[0] : null);
+        UpdateNameTMP(DiceNameTextB, selectedDices.Count > 1 ? selectedDices[1] : null);
+        UpdateNameTMP(DiceNameTextC, selectedDices.Count > 2 ? selectedDices[2] : null);
 
+        UpdateDescriptionTMP(DiceDescriptionTextA, selectedDices.Count > 0 ? selectedDices[0] : null);
+        UpdateDescriptionTMP(DiceDescriptionTextB, selectedDices.Count > 1 ? selectedDices[1] : null);
+        UpdateDescriptionTMP(DiceDescriptionTextC, selectedDices.Count > 2 ? selectedDices[2] : null);
         // 使用 selectedDices 做些什么
     }
 
@@ -53,14 +66,37 @@ public class GetDice : MonoBehaviour
 
         return selected;
     }
-// weighted dice
-    void UpdateTextMeshPro(TextMeshProUGUI tmpText, DiceBlueprints blueprint)
+// UpdateTextMeshPro 函数
+    void UpdateNameTMP(TextMeshProUGUI tmpText, DiceBlueprints blueprint)
     {
         if (tmpText != null && blueprint != null)
         {
-            string info = $"名稱：{blueprint.diceName}\n" +
-                          $"描述：{blueprint.diceDescription}";
-            tmpText.text = info;
+            if (langController.lang == "zh_TW")
+            {
+                string info = $"{blueprint.diceCNName}\n";
+                tmpText.text = info;
+            }
+            else if (langController.lang == "en_US")
+            {
+                string info = $"{blueprint.diceName}\n";
+                tmpText.text = info;
+            }
+        }
+    }
+    void UpdateDescriptionTMP(TextMeshProUGUI tmpText, DiceBlueprints blueprint)
+    {
+        if (tmpText != null && blueprint != null)
+        {
+            if (langController.lang == "zh_TW")
+            {
+                string info = $"{blueprint.diceCNDescription}";
+                tmpText.text = info;
+            }
+            else if (langController.lang == "en_US")
+            {
+                string info = $"{blueprint.diceDescription}";
+                tmpText.text = info;
+            }
         }
     }
 }

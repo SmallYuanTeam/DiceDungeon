@@ -18,7 +18,7 @@ MonoBehaviour:
   diceName: Defender
   diceCNName: "\u5B88\u8B77\u8005"
   diceDescription: null
-  diceCNDescription: nill
+  diceCNDescription: null
   weight: 13
   sprite: {fileID: 0}
   diceValues: 020000000300000002000000020000000200000002000000
