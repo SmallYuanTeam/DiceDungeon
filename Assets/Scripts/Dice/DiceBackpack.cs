@@ -4,12 +4,31 @@ using System.IO;
 using UnityEngine;
 using Dice;
 
+[System.Serializable]
 public class DiceBackpack : MonoBehaviour
 {
     public string lang = "zh_TW";
     public string[] langList = new string[] { "zh_TW", "en_US" };
     public List<DiceBlueprints> diceBlueprintsList = new List<DiceBlueprints>();
 
+    private void Start()
+    {
+        // Add 20 Basic dice blueprints to the backpack initially
+        DiceBlueprints[] allDiceBlueprints = Resources.LoadAll<DiceBlueprints>("DiceBlueprints");
+        int count = 0;
+        foreach (DiceBlueprints diceBlueprint in allDiceBlueprints)
+        {
+            if (diceBlueprint.diceRarity == DiceRarity.Basic) // Compare with DiceRarity enum value
+            {
+                diceBlueprintsList.Add(diceBlueprint);
+                count++;
+                if (count >= 20)
+                {
+                    break;
+                }
+            }
+        }
+    }
     // 將骰子藍圖添加到背包
     public void AddToBackpack(DiceBlueprints diceBlueprint)
     {

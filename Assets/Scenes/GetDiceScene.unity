@@ -181,10 +181,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u91CD\u5237\u9AB0\u5B50"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bc916f61839703b45a6ff82152a49f6e, type: 2}
+  m_sharedMaterial: {fileID: 1532402896520702457, guid: bc916f61839703b45a6ff82152a49f6e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -579,7 +579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 749.74, y: -464}
+  m_AnchoredPosition: {x: 789, y: -435}
   m_SizeDelta: {x: 184.1707, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847361455
@@ -1633,6 +1633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9922f9337f60eae49aaa1b604bf1b78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFirstJoinGame: 1
+  OriginalBasicDice: []
   GetDiceButton1: {fileID: 571171440}
   GetDiceButton2: {fileID: 867720427}
   GetDiceButton3: {fileID: 1149710990}
