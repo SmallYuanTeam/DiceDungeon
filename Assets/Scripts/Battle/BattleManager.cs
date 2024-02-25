@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Diagnostics;
 public enum GamePhase
 {
+    StartInit,
     Start,
     Standby,
     Draw,
@@ -47,19 +48,11 @@ public class BattleManager : MonoBehaviour
     
     DiceBlueprints GetNextDice()
     {
-        if (Hand.Count > 0)
+        Hand.AddRange(DicePool.Take(5));
+        DicePool.RemoveAll(dice => Hand.Contains(dice));
+        if (DicePool.Count == 0)
         {
-            DiceBlueprints nextDice = Hand[0];
-            Hand.RemoveAt(0);
-
-            // 将使用过的骰子放入废弃区
-            DiscardDicePool.Add(nextDice);
-
-            return nextDice;
-        }
-        else
-        {
-            UnityEngine.Debug.LogWarning("Hand is empty!");
+            UnityEngine.Debug.LogWarning("Pool is empty!");
             return null;
         }
     }
@@ -83,28 +76,46 @@ public class BattleManager : MonoBehaviour
             DicePool = new List<DiceBlueprints>(diceBackpack.GetAllDiceBlueprints());
             
             ShuffleDicePool();
+
+            SwitchPhase(GamePhase.Start);
         }
     }
+    
     public IEnumerator StartTurn()
     {
-        if (currentPhase == GamePhase.Draw)
+        yield return new WaitForSeconds(3f);
+        SwitchPhase(GamePhase.Standby);
+    }
+
+    public IEnumerator StandbyTurn()
+    {
+        yield return new WaitForSeconds(3f);
+        SwitchPhase(GamePhase.Draw);
+    }
+
+    public IEnumerator DrawTurn()
+    {
+        Hand.AddRange(DicePool.Take(5));
+        DicePool.RemoveAll(dice => Hand.Contains(dice));
+
+        
+        if (Hand.Count < 5) // 檢查是否還需要補滿骰子
         {
-            Hand.AddRange(DicePool.Take(5));
+            ReplenishDicePool();
+
+            
+            Hand.AddRange(DicePool.Take(5 - Hand.Count)); // 補滿骰子
             DicePool.RemoveAll(dice => Hand.Contains(dice));
-
-            // 檢查是否還需要補滿骰子
-            if (Hand.Count < 5)
-            {
-                ReplenishDicePool();
-
-                // 再次抽滿手上的骰子
-                Hand.AddRange(DicePool.Take(5 - Hand.Count));
-                DicePool.RemoveAll(dice => Hand.Contains(dice));
-            }
-            yield return new WaitForSeconds(3f);
-            SwitchPhase(GamePhase.Battle);
         }
-        // 抽滿 5 顆骰子
+
+        yield return new WaitForSeconds(3f);
+        SwitchPhase(GamePhase.Battle);
+    }
+
+    public IEnumerator BattleTurn()
+    {
+        yield return new WaitForSeconds(3f);
+        SwitchPhase(GamePhase.Discard);
     }
 
     // 丟棄骰子階段
@@ -115,11 +126,19 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.End);
     }
+    // 回合結束階段
     public IEnumerator EndTurn()
     {
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Enemy);
     }
+    // 怪物回合階段
+    public IEnumerator EnemyTurn()
+    {
+        yield return new WaitForSeconds(3f);
+        SwitchPhase(GamePhase.Draw);
+    }
+
     // 抽一顆骰子(調試功能)
     public void DrawOneDice()
     {
@@ -139,8 +158,12 @@ public class BattleManager : MonoBehaviour
     {
         switch (currentPhase) // 回合階段更新
         {
-            case GamePhase.Start:
+            case GamePhase.StartInit:
                 StartInitlizeBattle();
+                //SwitchPhase(GamePhase.Start);
+                break;
+            case GamePhase.Start:
+                StartTurn();
                 //SwitchPhase(GamePhase.Standby);
                 break;
             case GamePhase.Standby:
