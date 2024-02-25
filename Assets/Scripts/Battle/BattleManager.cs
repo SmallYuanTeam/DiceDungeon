@@ -17,10 +17,12 @@ public enum GamePhase
 }
 public class BattleManager : MonoBehaviour
 {
-    public DiceBackpack diceBackpack;
+    private DiceBackpack diceBackpack;
     public List<DiceBlueprints> DicePool;
     public List<DiceBlueprints> DiscardDicePool;
     public List<DiceBlueprints> Hand;
+    private bool isPlayerTurn = false;
+    private bool hasUpdate = false;
     private GamePhase currentPhase;
 
     //Shuffle the dice pool
@@ -45,27 +47,18 @@ public class BattleManager : MonoBehaviour
         DiscardDicePool.Clear();
         ShuffleDicePool();
     }
-    
-    DiceBlueprints GetNextDice()
+    void ResetUpdateFlag()
     {
-        Hand.AddRange(DicePool.Take(5));
-        DicePool.RemoveAll(dice => Hand.Contains(dice));
-        if (DicePool.Count == 0)
-        {
-            UnityEngine.Debug.LogWarning("Pool is empty!");
-            return null;
-        }
+        hasUpdate = false;
     }
-    
     
     // 進入場景時初始化
     void Start()
     {
         diceBackpack = FindObjectOfType<DiceBackpack>();
-        SwitchPhase(GamePhase.StartInit);
     }
     //進入戰鬥時初始化
-    public void StartInitlizeBattle()
+    public IEnumerator StartInitlizeBattle()
     {
         if (diceBackpack == null)
         {
@@ -74,25 +67,29 @@ public class BattleManager : MonoBehaviour
         else
         {
             DicePool = new List<DiceBlueprints>(diceBackpack.GetAllDiceBlueprints());
-            
             ShuffleDicePool();
 
             SwitchPhase(GamePhase.Start);
+            yield return new WaitForSeconds(0.01f);
+            ResetUpdateFlag();
         }
+        
     }
-
+    // 開始階段
     public IEnumerator StartTurn()
     {
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Standby);
+        ResetUpdateFlag();
     }
-
+    // 等待階段
     public IEnumerator StandbyTurn()
     {
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Draw);
+        ResetUpdateFlag();
     }
-
+    // 抽牌階段
     public IEnumerator DrawTurn()
     {
         Hand.AddRange(DicePool.Take(5));
@@ -110,11 +107,18 @@ public class BattleManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Battle);
+        ResetUpdateFlag();
     }
-
+    // 玩家回合階段
     public IEnumerator BattleTurn()
     {
-        
+        isPlayerTurn = true;
+        yield return new WaitForSeconds(0.1f);
+        // 等待玩家操作
+        while (isPlayerTurn)
+        {
+            yield return null;
+        }
     }
 
     // 丟棄骰子階段
@@ -124,25 +128,30 @@ public class BattleManager : MonoBehaviour
         Hand.Clear();
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.End);
+        ResetUpdateFlag();
     }
     // 回合結束階段
     public IEnumerator EndTurn()
     {
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Enemy);
+        ResetUpdateFlag();
     }
     // 怪物回合階段
     public IEnumerator EnemyTurn()
     {
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Start);
+        ResetUpdateFlag();
     }
 
 
     // 戰鬥結束切換到丟棄骰子階段
     public void EndBattle()
     {
+        isPlayerTurn = false;
         SwitchPhase(GamePhase.Discard);
+        ResetUpdateFlag();
     }
 
     // 抽一顆骰子(調試功能)
@@ -162,38 +171,49 @@ public class BattleManager : MonoBehaviour
     }
     void Update()
     {
-        switch (currentPhase) // 回合階段更新
+        if (!hasUpdate)
         {
-            case GamePhase.StartInit:
-                StartInitlizeBattle();
-                //SwitchPhase(GamePhase.Start);
-                break;
-            case GamePhase.Start:
-                StartTurn();
-                //SwitchPhase(GamePhase.Standby);
-                break;
-            case GamePhase.Standby:
-                //SwitchPhase(GamePhase.Draw);
-                break;
-            case GamePhase.Draw:
-                StartTurn();
-                //SwitchPhase(GamePhase.Battle);
-                break;
-            case GamePhase.Battle:
-                //SwitchPhase(GamePhase.Discard);
-                break;
-            case GamePhase.Discard:
-                DiscordTurn();
-                //SwitchPhase(GamePhase.Enemy);
-                break;
-            case GamePhase.End:
-                EndTurn();
-                //SwitchPhase(GamePhase.Draw);
-                break;
-            case GamePhase.Enemy:
-                //SwitchPhase(GamePhase.End);
-                break;
+            UnityEngine.Debug.Log(currentPhase);
+            switch (currentPhase) // 回合階段更新
+            {
+                case GamePhase.StartInit:
+                    StartCoroutine(StartInitlizeBattle());
+                    //SwitchPhase(GamePhase.Start);
+                    break;
+                case GamePhase.Start:
+                    StartCoroutine(StartTurn());
+                    //SwitchPhase(GamePhase.Standby);
+                    break;
+                case GamePhase.Standby:
+                    StartCoroutine(StandbyTurn());
+                    //SwitchPhase(GamePhase.Draw);
+                    break;
+                case GamePhase.Draw:
+                    StartCoroutine(DrawTurn());
+                    //SwitchPhase(GamePhase.Battle);
+                    break;
+                case GamePhase.Battle:
+                    StartCoroutine(BattleTurn());
+                    //SwitchPhase(GamePhase.Discard);
+                    break;
+                case GamePhase.Discard:
+                    StartCoroutine(DiscordTurn());
+                    //SwitchPhase(GamePhase.Enemy);
+                    break;
+                case GamePhase.End:
+                    StartCoroutine(EndTurn());
+                    //SwitchPhase(GamePhase.Draw);
+                    break;
+                case GamePhase.Enemy:
+                    StartCoroutine(EnemyTurn());
+                    //SwitchPhase(GamePhase.End);
+                    break;
+            }
+            if (currentPhase != GamePhase.StartInit)
+            {
+                hasUpdate = true;
+            }
         }
+        
     }
-    
 }
