@@ -136,7 +136,7 @@ public class BattleManager : MonoBehaviour
     public IEnumerator EnemyTurn()
     {
         yield return new WaitForSeconds(3f);
-        SwitchPhase(GamePhase.Draw);
+        SwitchPhase(GamePhase.Start);
     }
 
     // 抽一顆骰子(調試功能)
