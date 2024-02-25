@@ -114,8 +114,7 @@ public class BattleManager : MonoBehaviour
 
     public IEnumerator BattleTurn()
     {
-        yield return new WaitForSeconds(3f);
-        SwitchPhase(GamePhase.Discard);
+        
     }
 
     // 丟棄骰子階段
@@ -137,6 +136,13 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Start);
+    }
+
+
+    // 戰鬥結束切換到丟棄骰子階段
+    public void EndBattle()
+    {
+        SwitchPhase(GamePhase.Discard);
     }
 
     // 抽一顆骰子(調試功能)
