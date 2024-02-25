@@ -62,7 +62,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         diceBackpack = FindObjectOfType<DiceBackpack>();
-        SwitchPhase(GamePhase.Start);
+        SwitchPhase(GamePhase.StartInit);
     }
     //進入戰鬥時初始化
     public void StartInitlizeBattle()
@@ -80,7 +80,7 @@ public class BattleManager : MonoBehaviour
             SwitchPhase(GamePhase.Start);
         }
     }
-    
+
     public IEnumerator StartTurn()
     {
         yield return new WaitForSeconds(3f);
