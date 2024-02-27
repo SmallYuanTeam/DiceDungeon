@@ -69,5 +69,15 @@ namespace Dice
         public List<int> diceValues;
         public List<DiceAbility> diceAbilities;
         public List<DiceTarget> diceTargets;
+
+        // 儲存骰子實例並引用
+        private GameObject diceInstance;
+
+        public void InstantiateDice(Vector3 position)
+        {
+            diceInstance = Instantiate(Resources.Load<GameObject>("DicePrefab"));
+            diceInstance.transform.position = position;
+        }
+        
     }
 }

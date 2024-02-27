@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class EntityContainer : MonoBehaviour 
 {
+    public enum EntityType
+    {
+        Player,
+        Enemy
+    }
+    public EntityType entityType;
+    public GameObject BattleManagers;
     // Get All effect to the entity
     public int Increace = 0; // 亢奮,增傷
     public int Decrease = 0; // 減傷
@@ -21,5 +28,40 @@ public class EntityContainer : MonoBehaviour
     public int Pray = 0; // 祈禱
     public int Curse = 0; // 詛咒
     public int Utility = 0; // 實用
+    // Give the Entity Data
 
+    public int HP = 0; // 血量
+    public int Energy = 0; // 能量
+    public int Attack = 0; // 攻擊
+    public int Shield = 0; // 護盾
+    void Start()
+    {
+        BattleManagers = GameObject.Find("BattleManagers");
+    }
+
+    public void AttackEntity(int damage)
+    {
+        HP -= damage;
+        if (HP <= 0)
+        {
+            if (entityType == EntityType.Player)
+            {
+                BattleManagers.GetComponent<BattleManager>().GameOver();
+            }
+            else
+            {
+                BattleManagers.GetComponent<BattleManager>().Win();
+            }
+        }
+    }
+    void GameInit()
+    {
+        if (entityType == EntityType.Player)
+        {
+            HP = 100;
+            Energy = 3;
+            Attack = 0;
+            Shield = 0;
+        }
+    }
 }

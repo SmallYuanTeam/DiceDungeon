@@ -18,9 +18,13 @@ public enum GamePhase
 public class BattleManager : MonoBehaviour
 {
     private DiceBackpack diceBackpack;
+    public GameObject player;
+    public GameObject enemy;
     public List<DiceBlueprints> DicePool;
     public List<DiceBlueprints> DiscardDicePool;
     public List<DiceBlueprints> Hand;
+    private int ContainsDamage = 0;
+    private Vector3 startPos = new Vector3(0f, 2f, 0f);
     private bool isPlayerTurn = false;
     private bool hasUpdate = false;
     private GamePhase currentPhase;
@@ -56,6 +60,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         diceBackpack = FindObjectOfType<DiceBackpack>();
+        player = GameObject.Find("Player");
     }
     //進入戰鬥時初始化
     public IEnumerator StartInitlizeBattle()
@@ -105,6 +110,12 @@ public class BattleManager : MonoBehaviour
             DicePool.RemoveAll(dice => Hand.Contains(dice));
         }
 
+        startPos = new Vector3(0f, 2f, 0f);
+        for (int i = 0; i < Hand.Count; i++)
+        {
+            Hand[i].InstantiateDice(startPos);
+            startPos.x += 2.0f;
+        }
         yield return new WaitForSeconds(3f);
         SwitchPhase(GamePhase.Battle);
         ResetUpdateFlag();
@@ -145,7 +156,60 @@ public class BattleManager : MonoBehaviour
         ResetUpdateFlag();
     }
 
+//    public void PerformAttack(int damage, GameObject attacker, GameObject target, List<DiceTarget> diceTargets)
+//     {
+//         EntityContainer attackerContainer = attacker.GetComponent<EntityContainer>();
+//         EntityContainer targetContainer = target.GetComponent<EntityContainer>();
 
+//         if (attackerContainer != null && targetContainer != null)
+//         {
+//             int totalDamage = damage + attackerContainer.Attack;
+//             targetContainer.AttackEntity(totalDamage);
+
+//             // 在这里处理 diceTargets 相关的逻辑
+//             foreach (var diceTarget in diceTargets)
+//             {
+//                 switch (diceTarget)
+//                 {
+//                     case DiceTarget.Self:
+//                         // 对自己的处理
+//                         break;
+//                     case DiceTarget.Enemy:
+//                         // 对敌人的处理
+//                         break;
+//                     case DiceTarget.All:
+//                         // 对所有的处理
+//                         break;
+//                 }
+//             }
+//         }
+//         else
+//         {
+//             //Debug.LogError("EntityContainer not found on attacker or target GameObject.");
+//         }
+//     }
+
+//     public void PlayerAttack(int damage, List<DiceTarget> diceTargets)
+//     {
+        
+//         PerformAttack(damage, player, enemy, diceTargets);
+//     }
+
+//     public void EnemyAttack(int damage, List<DiceTarget> diceTargets)
+//     {
+//         PerformAttack(damage, enemy, player, diceTargets);
+//     }
+
+    // 玩家勝利
+    public void Win()
+    {
+        UnityEngine.Debug.Log("Win");
+    }
+    // 玩家失敗
+    public void GameOver()
+    {
+        UnityEngine.Debug.Log("GameOver");
+    }
     // 戰鬥結束切換到丟棄骰子階段
     public void EndBattle()
     {
@@ -163,12 +227,18 @@ public class BattleManager : MonoBehaviour
         }
         Hand.AddRange(DicePool.Take(1));
         DicePool.RemoveAll(dice => Hand.Contains(dice));
+        for (int i = 0; i < Hand.Count; i++)
+        {
+            Hand[i].InstantiateDice(startPos);
+            startPos.x += 2.0f;
+        }
     }
     // 切換遊戲階段
     void SwitchPhase(GamePhase newPhase)
     {
         currentPhase = newPhase;
     }
+
     void Update()
     {
         if (!hasUpdate)
@@ -214,6 +284,5 @@ public class BattleManager : MonoBehaviour
                 hasUpdate = true;
             }
         }
-        
     }
 }
