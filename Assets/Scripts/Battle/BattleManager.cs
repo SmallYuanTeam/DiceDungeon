@@ -229,7 +229,7 @@ public class BattleManager : MonoBehaviour
             dicePrefabInstance.transform.SetParent(transform);
 
             // 更新水平偏移量
-            offsetX -= 2.0f;
+            offsetX -= 1.0f;
         }
     }
     // 玩家勝利
