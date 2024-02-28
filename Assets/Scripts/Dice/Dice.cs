@@ -1,17 +1,52 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 namespace Dice
 {
     public class Dice : MonoBehaviour
     {
-        public Image spriteRenderer; // 骰子的图像渲染器
-        public Text valueText; // 显示骰子值的文本
-
-        // 设置骰子的属性
-        public void SetDiceAttributes(DiceBlueprints blueprints)
+        public DiceBlueprints diceBlueprint;
+        public DiceRarity diceRarity;
+        public DiceType diceType;
+        public string diceID;
+        public string diceName;
+        public string diceCNName;
+        public string diceDescription;
+        public string diceCNDescription;
+        public int weight;
+        public Sprite sprite;
+        public List<int> diceValues;
+        public List<DiceAbility> diceAbilities;
+        public List<DiceTarget> diceTargets;
+        private void InitBlueprint()
         {
-            spriteRenderer.sprite = blueprints.sprite; // 设置图像
+            // 确保已分配骰子数据
+            if (diceBlueprint != null)
+            {
+                diceRarity = diceBlueprint.diceRarity;
+                diceType = diceBlueprint.diceType;
+                diceID = diceBlueprint.diceID;
+                diceName = diceBlueprint.diceName;
+                diceCNName = diceBlueprint.diceCNName;
+                diceDescription = diceBlueprint.diceDescription;
+                diceCNDescription = diceBlueprint.diceCNDescription;
+                weight = diceBlueprint.weight;
+                sprite = diceBlueprint.sprite;
+                diceValues = diceBlueprint.diceValues;
+                diceAbilities = diceBlueprint.diceAbilities;
+                diceTargets = diceBlueprint.diceTargets;
+            }
+            else
+            {
+                Debug.LogWarning("DiceBlueprint is not assigned to the Dice prefab.");
+            }
         }
+        public void InitializeFromBlueprint(DiceBlueprints blueprint)
+        {
+            diceBlueprint = blueprint;
+            InitBlueprint();
+        }
+
     }
 }

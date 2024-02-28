@@ -32,6 +32,7 @@ public class EntityContainer : MonoBehaviour
 
     public int HP = 0; // 血量
     public int Energy = 0; // 能量
+    public int DiceDraw = 5; // 抽骰子數量
     public int Attack = 0; // 攻擊
     public int Shield = 0; // 護盾
     void Start()

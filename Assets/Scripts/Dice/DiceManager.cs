@@ -4,19 +4,19 @@ using System.Collections.Generic;
 public class DiceManager : MonoBehaviour
 {
     public GameObject dicePrefab; // 骰子预制体
-    public GameObject BattleManagers;
-    public int? numberOfDice = null; // 每次需要生成的骰子数量
+    public GameObject player; // 玩家
+    public int numberOfDice = 0; // 每次需要生成的骰子数量
 
     private List<GameObject> diceInstances = new List<GameObject>(); // 存储当前场景中的骰子实例
 
     void Start()
     {
-        BattleManagers = GameObject.Find("BattleManagers");
+        player = GameObject.Find("Player");
     }
-
     // 生成新的骰子实例
     public void GenerateDice()
     {
+        numberOfDice = player.GetComponent<EntityContainer>().DiceDraw;
         // 清空当前场景中的所有骰子实例
         ClearDice();
 
