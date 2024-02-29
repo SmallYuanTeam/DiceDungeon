@@ -19,6 +19,7 @@ namespace Dice
         public List<int> diceValues;
         public List<DiceAbility> diceAbilities;
         public List<DiceTarget> diceTargets;
+        
         private void InitBlueprint()
         {
             // 确保已分配骰子数据
@@ -36,6 +37,18 @@ namespace Dice
                 diceValues = diceBlueprint.diceValues;
                 diceAbilities = diceBlueprint.diceAbilities;
                 diceTargets = diceBlueprint.diceTargets;
+
+                //set dice  image
+                Image diceImage = GetComponent<Image>();
+                if (diceImage != null)
+                {
+                    diceImage.sprite = sprite;
+                }
+                else
+                {
+                    Debug.LogWarning("Dice Image is not assigned to the Dice prefab.");
+                }
+
             }
             else
             {

@@ -207,7 +207,7 @@ public class BattleManager : MonoBehaviour
         }
 
         // 初始化水平偏移量
-        float offsetX = 0f;
+        float offsetX = 4f;
 
         // 搜尋Hand列表中的所有骰子
         foreach (DiceBlueprints blueprint in Hand)
@@ -222,14 +222,14 @@ public class BattleManager : MonoBehaviour
             diceComponent.InitializeFromBlueprint(blueprint);
 
             // 設定骰子位置
-            Vector3 position = new Vector3(offsetX, 2f, 0f);
+            Vector3 position = new Vector3(offsetX, -3f, 0f);
             dicePrefabInstance.transform.position = position;
 
             // 設定父物件
             dicePrefabInstance.transform.SetParent(transform);
 
             // 更新水平偏移量
-            offsetX -= 1.0f;
+            offsetX -= 2.0f;
         }
     }
     // 玩家勝利
