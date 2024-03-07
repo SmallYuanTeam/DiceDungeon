@@ -39,10 +39,28 @@ public class EntityContainer : MonoBehaviour
     {
         BattleManagers = GameObject.Find("BattleManagers");
     }
-
-    public void AttackEntity(int damage)
+    // 結算傷害
+    public void DamageEntity(int damage)
     {
-        HP -= damage;
+        if (Shield > 0)
+        {
+            Shield -= damage;
+            if (Shield < 0)
+            {
+                HP += Shield;
+                Shield = 0;
+            }
+        }
+        else
+        {
+            HP -= damage;
+            HPChange();
+        }
+    } 
+
+    // HP結算
+    public void HPChange()
+    {
         if (HP <= 0)
         {
             if (entityType == EntityType.Player)
@@ -64,5 +82,26 @@ public class EntityContainer : MonoBehaviour
             Attack = 0;
             Shield = 0;
         }
+    }
+
+    public int AttackDamage(int damage)
+    {
+        Attack = Increace - Decrease;
+        Attack += damage;
+        return Attack;
+    }
+
+    public void PoisonDamage()
+    {
+        HP -= Poison;
+        HPChange();
+        Poison -=1;
+    }
+
+    public void BurnDamage()
+    {
+        HP -= Burn;
+        HPChange();
+        Burn -= Burn/3;
     }
 }
